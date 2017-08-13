@@ -1,21 +1,25 @@
-<div>
+<div class="main">
   <button (click)="goBack()">GO BACK</button>
-  <div class="game">   
-    <div class="player">
-      <app-player [name]="'Player 1'"></app-player>
-      <span>write..</span>
-      <button>action 1</button>
-      <button>action 2</button>
-  </div>
+  <div class="game"> 
     <div class="dice">
       <app-player-dice class="player-dice"></app-player-dice>
       <app-player-dice class="player-dice"></app-player-dice>
     </div>
-    <div class="player">
+    <div class="player1 player">
+      <app-player [name]="'Player 1'"></app-player>
+      <span>write..</span>
+      <div>
+        <button>action 1</button>
+        <button>action 2</button>
+      </div>
+    </div>
+    <div class="player2 player">
       <app-player [name]="'Player 2'"></app-player>
       <span>write..</span>
-      <button>action 1</button>
-      <button>action 2</button>
+      <div>
+        <button>action 1</button>
+        <button>action 2</button>
+      </div>
     </div>
   </div>
 </div>
