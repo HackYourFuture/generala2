@@ -4,16 +4,27 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Getting Started
 
-To get you started you can simply clone the `Generala2` repository and install the dependencies using:
+To get you started you can simply clone the `Generala2` repository and install the dependencies using git:
 
 ```
 git clone https://github.com/HackYourFuture/generala2.git
-cd Generala2
+cd Generala2/generala2
 ```
 
 ```
 npm install
 ```
+
+```
+npm run build
+```
+```
+cd ..
+```
+```
+npm install
+```
+
 ```
 npm start
 ```
@@ -21,6 +32,8 @@ npm start
 ## Prerequisites
 
 You need git to clone the `Generala2` repository. You can get git from [here](https://git-scm.com/).
+
+You’ll need MongoDB installed to use as our database. You can get mongDB from [here](https://docs.mongodb.com/manual/installation/)
 
 We also use a number of Node.js tools to initialize and test `Generala2`. You must have Node.js
 and its package manager (npm) installed. You can get them from [here](https://nodejs.org/).
@@ -55,11 +68,6 @@ Now browse to the app at [`http://localhost:4200/`][local-app-url].
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-Or you can use:
-
-```
-npm run serve
-```
 
 ## Code scaffolding
 
@@ -68,12 +76,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-Or you can use:
-
-```
-npm run build
-```
 
 ## Running unit tests
 
