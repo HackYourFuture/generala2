@@ -1,0 +1,9 @@
+<div class="userList">
+  <span>Online users:</span>
+  <div><button (click)="refresh()">Refresh</button></div>
+  <div *ngIf="users">
+    <ul *ngFor="let user of users">
+      <li *ngIf="user">{{user.email}}</li>
+    </ul>
+  </div>
+</div>

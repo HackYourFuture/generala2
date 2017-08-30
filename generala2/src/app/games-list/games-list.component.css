@@ -1,0 +1,10 @@
+span {
+    color:brown;
+}
+table {
+    color:brown;
+    margin-bottom: 1em;
+}
+table, th, td {
+    border: 1px solid brown;
+}

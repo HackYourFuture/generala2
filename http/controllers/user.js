@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 var User = require('../../models/user');
+var Game = require('../../models/game');
 var jwt = require('jsonwebtoken');
 var config = require('../../config/token');
 var auth = require('../middleware/auth');
@@ -36,6 +37,7 @@ router.post('/register', (req, res) => {
         var newUser = new User();
         newUser.email = reqUser.email;
         newUser.password = newUser.generateHash(reqUser.password);
+        newUser.loginState = true;
         newUser.save( (err) => {
             if( err )
                 throw err;
@@ -62,9 +64,12 @@ router.post('/login', (req, res) => {
   var reqUser = req.body;
 
   User.findOne({'email' : reqUser.email}, (err, user) => {
-
-    if( err )
+    console.log(reqUser.email);
+    console.log(user);
+    if( err ){
+      console.log(err.message);
       return done(err);
+    }
 
     if( !user ) {
       let content = {
@@ -83,7 +88,9 @@ router.post('/login', (req, res) => {
       res.send(content);
       return;
     }
-
+     User.findOneAndUpdate({
+       'email' : reqUser.email},{ $set : { "loginState" : true } }, (err, user) => {
+    });
     let token = jwt.sign(user, config.secret, {
       expiresIn : 60*60*24
     });
@@ -97,6 +104,43 @@ router.post('/login', (req, res) => {
 
   })
 
+});
+
+//Get logged in users.
+router.get('/users', (req, res) => {
+  User.find({
+    'loginState' : true}, (err, users) => {
+      if( err ) {
+        return done(err);
+      }
+      res.send(users);
+    });
+});
+
+router.get('/games', (req, res) => {
+  Game.find({}, (err, games) => {
+      if( err ) {
+        return done(err);
+      }
+      res.send(games);
+    });
+});
+
+router.post('/logout', (req, res) => {
+  var reqUser = req.body;
+  User.findOneAndUpdate({
+    'email' : reqUser.email }, { $set : { "loginState" : false } }, (err, user) => {
+  });
+  
+    res.send({"state":"success"});
+});
+
+router.delete('/delete/:email', (req, res) => {
+  let arg = req.params.email + '';
+  User.remove({ email : arg }, function(err, data) {
+  });
+
+  res.send({"state":"success"});
 });
 
 module.exports = router;

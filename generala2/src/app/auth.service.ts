@@ -12,6 +12,9 @@ export class AuthService {
   token: string;
   private userSource = new Subject<User>();
   user$ = this.userSource.asObservable();
+  loggedinUsers:any;
+  games:any;
+  currUser = new User();///
 
   constructor(public http: Http) { }
 
@@ -21,6 +24,7 @@ export class AuthService {
 
   registerUser(user: User): Observable<boolean> {
     let body = JSON.stringify(user);
+    this.currUser = user;
     let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
@@ -29,6 +33,7 @@ export class AuthService {
 
   loginUser(user): Observable<Object> {
     let body = JSON.stringify(user);
+    this.currUser = user;
     let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
@@ -37,9 +42,58 @@ export class AuthService {
   }
 
   logout() {
+    let body = JSON.stringify(this.currUser);///
+    let headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
     this.token = null;
     localStorage.removeItem('currentUser');
+
+    return this.http.post(`${this.base_url}/logout`, body, options).subscribe((res:Response) => res.json());
   }
+
+  deleteUser() {
+    let headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    this.token = null;
+    localStorage.removeItem('currentUser');
+    ///
+    return this.http.delete(`${this.base_url}/delete/${this.currUser.email}`, options).subscribe((res:Response) => res.json());
+  }
+
+  getUsers() :Observable<Object> {
+    
+    let headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    console.log("getUsers");
+    return this.http.get(`${this.base_url}/users`, options).map((res) => this.loggedinUsers = res.json());
+    /*let currUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (this.loggedinUsers) {
+      this.loggedinUsers = this.loggedinUsers.filter(function( obj ) {
+        return obj.email !== currUser.email;
+      });
+    }
+
+    return this.loggedinUsers.asObservable();*/
+  }
+
+  getGames():  Observable<Object> {
+    
+    let headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(`${this.base_url}/games`, options).map((res) => this.games = res.json());
+    //return this.games;
+  }
+
+  getCurrentUser(){
+    return this.currUser;
+  }
+
+
+
 
   verify(): Observable<Object> {
 

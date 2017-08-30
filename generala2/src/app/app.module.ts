@@ -13,6 +13,8 @@ import { PlayerDiceComponent } from './player-dice/player-dice.component';
 import { PlayerScoringComponent } from './player-scoring/player-scoring.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { GamesListComponent } from './games-list/games-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { RegisterComponent } from './register/register.component';
     PlayerDiceComponent,
     PlayerScoringComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserListComponent,
+    GamesListComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule,

@@ -1,0 +1,12 @@
+.playerDice{
+    width: 100%;
+}
+
+span {
+    color:brown;
+}
+li {
+    color:brown;
+    list-style-type: none;
+    margin-bottom: 1em;
+}

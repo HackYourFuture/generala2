@@ -15,5 +15,26 @@ export class GameComponent implements OnInit {
    
   ngOnInit() {
   }
+  score1 = {
+    "score1": 0,
+    "score2": 0,
+    "score3": 0,
+    "score4": 0,
+    "score5": 0,
+    "score6": 0
+  };
+
+  score2 = {
+    "score1": 0,
+    "score2": 0,
+    "score3": 0,
+    "score4": 0,
+    "score5": 0,
+    "score6": 0
+  };
+  setScore1(score){
+    this.score1 = score;
+  }
+    
 
 }

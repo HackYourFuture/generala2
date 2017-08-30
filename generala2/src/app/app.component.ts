@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './auth.service';
 import { User } from './users/user';
 import { Subscription }   from 'rxjs/Subscription';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
   message: String;
   subscription: Subscription;
 
-  constructor( private authService: AuthService) {
+  constructor( private authService: AuthService, private router: Router) {
     this.articles = [];
 
     this.subscription = authService.user$.subscribe( (user) => this.user = user )
@@ -38,6 +39,14 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authService.logout();
     this.user = null;
     this.message = "Logged out";
+    this.router.navigate(['']);
+  }
+
+  deleteUser() {
+    this.authService.deleteUser();
+    this.user = null;
+    this.message = "Deleted";
+    this.router.navigate(['']);
   }
 
 }

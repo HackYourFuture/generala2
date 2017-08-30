@@ -1,0 +1,19 @@
+<div class="userList">
+  <span>Games:</span>
+  <div><button (click)="refresh()">Refresh</button></div>
+  <div *ngIf="games">
+    <table>
+      <tr>
+        <th>player 1</th>
+        <th>score</th>
+        <th>player 2</th>
+        <th>score</th>
+      </tr>
+      <tr *ngFor="let game of games">
+        <td>{{game.player1}}</td>
+        <td>{{game.score1}}</td>
+        <td>{{game.player2}}</td>
+        <td>{{game.score2}}</td>
+      </tr>
+    </table>
+</div>
