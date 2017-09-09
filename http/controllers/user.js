@@ -8,13 +8,11 @@ var config = require('../../config/token');
 var auth = require('../middleware/auth');
 
 router.get('/check-state', auth.verifyToken, (req, res) => {
-
   let content = {
     success: true,
     message: 'Successfully logged in'
   }
   res.send(content);
-
 });
 
 router.post('/register', (req, res) => {
@@ -60,17 +58,12 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-
   var reqUser = req.body;
-
   User.findOne({'email' : reqUser.email}, (err, user) => {
-    console.log(reqUser.email);
-    console.log(user);
     if( err ){
       console.log(err.message);
       return done(err);
     }
-
     if( !user ) {
       let content = {
         success: false,
@@ -101,7 +94,6 @@ router.post('/login', (req, res) => {
       token: token
     };
     res.send(content);
-
   })
 
 });
@@ -126,6 +118,15 @@ router.get('/games', (req, res) => {
     });
 });
 
+router.post('/save', (req, res) => {
+  var newGame = new Game();
+  newGame.player1 = req.body.player1;
+  newGame.player2 = req.body.player2;
+  newGame.score1 = req.body.score1;
+  newGame.score2 = req.body.score2;
+  newGame.save( (err) => {});
+  res.send({"state":"success"});
+});
 router.post('/logout', (req, res) => {
   var reqUser = req.body;
   User.findOneAndUpdate({

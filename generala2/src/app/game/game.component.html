@@ -2,26 +2,16 @@
   <button (click)="goBack()">GO BACK</button>
   <div class="game"> 
     <div class="dice">
-      <app-player-dice (select)="setScore1($event)" class="player-dice"></app-player-dice>
+      <app-player-dice (select)="setScore($event)" class="player-dice"></app-player-dice>
       <app-player-dice class="player-dice"></app-player-dice>
-      <app-user-list></app-user-list>
+      <button (click)="saveGame()">Save Game</button>
       <app-games-list></app-games-list>
     </div>
     <div class="player1 player">
-      <app-player [name]="'Player 1'" [score]="score1"></app-player>
-      <span>write..</span>
-      <div>
-        <button>action 1</button>
-        <button>action 2</button>
-      </div>
+      <app-player [name]="'You'" [score]="score1"></app-player>
     </div>
     <div class="player2 player">
-      <app-player [name]="'Player 2'" [score]="score2"></app-player>
-      <span>write..</span>
-      <div>
-        <button>action 1</button>
-        <button>action 2</button>
-      </div>
+      <app-player [name]="player2" [score]="score2"></app-player>
     </div>
   </div>
 </div>

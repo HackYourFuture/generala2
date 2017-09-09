@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('mea2n:server');
 var http = require('http');
+var ws = require('../http/ws/ws');
 
 /**
  * Get port from environment and store in Express.
@@ -21,6 +22,14 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+
+let socketIO = require('socket.io');
+let io = socketIO(server);
+let players = [];
+io.sockets.on('connection', function (socket) {
+    console.log('client connected');
+    ws.initGame(io, socket, players);
+});
 
 /**
  * Listen on provided port, on all network interfaces.

@@ -8,7 +8,7 @@ To get you started you can simply clone the `Generala2` repository and install t
 
 ```
 git clone https://github.com/HackYourFuture/generala2.git
-cd Generala2/generala2
+cd generala2/generala2
 ```
 
 ```

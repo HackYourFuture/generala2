@@ -3,12 +3,13 @@ import { AuthService } from './auth.service';
 import { User } from './users/user';
 import { Subscription }   from 'rxjs/Subscription';
 import { Router } from '@angular/router';
+import { GameService } from 'app/game.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [AuthService]
+  providers: [AuthService, GameService]
 })
 export class AppComponent implements OnInit, OnDestroy {
   articles;

@@ -19,7 +19,7 @@ mongoose.connect(config.database);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'Generala2/dist')));
+app.use(express.static(path.join(__dirname, 'generala2/dist')));
 
 // Add headers
 app.use(function (req, res, next) {
@@ -34,7 +34,7 @@ app.use(function (req, res, next) {
 app.use('/api/user', user);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Generala/dist/index.html'));
+  res.sendFile(path.join(__dirname, 'generala2/dist/index.html'));
 });
 
 // catch 404 and forward to error handler

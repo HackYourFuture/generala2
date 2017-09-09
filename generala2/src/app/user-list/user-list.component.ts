@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'app/auth.service';
 import { User } from 'app/users/user';
+import { GameService } from 'app/game.service';
 
 @Component({
   selector: 'app-user-list',
@@ -9,15 +11,21 @@ import { User } from 'app/users/user';
 })
 export class UserListComponent implements OnInit {
   private users;
-  constructor(private authService: AuthService) {}
+  private message;
+  constructor(private router: Router, private authService: AuthService, 
+    private gameService : GameService) {
 
-  ngOnInit() {
-    this.authService.getUsers().subscribe(users => this.users = users);
-    
   }
 
-  refresh() {
-    this.authService.getUsers().subscribe(users => this.users = users);
+  ngOnInit() {
+    this.gameService.reqUsers();
+    this.gameService.resUsers().subscribe(users => this.users = users);
+  }
+
+  joinGame(user){
+    user.inviterEmail = this.authService.getCurrentUser().email;
+    this.gameService.joinGame(user);
+    this.gameService.onJoinGame().subscribe(message => this.message = message);
   }
 }
 

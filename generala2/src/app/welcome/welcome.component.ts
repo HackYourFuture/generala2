@@ -10,10 +10,10 @@ export class WelcomeComponent implements OnInit {
   
   imagePath : string = "./assets/pic/generala.jpg";
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   startGame(){
-    this.router.navigate(['./game']);
+    this.router.navigate(['./user-list']);
    }
    
   ngOnInit() {
