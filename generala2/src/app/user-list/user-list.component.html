@@ -1,10 +1,14 @@
-<div class="userList">
-  <span>Online users:</span>
-  <div *ngIf="users">
-    <ul *ngFor="let user of users">
-      <li *ngIf="user">{{user.email}}
-        <button (click)="joinGame(user)">Play</button>
-      </li>
-    </ul>
+<div class="main">
+  <div>
+    <button (click)="goBack()">GO BACK</button>
+  <div>
+  <div class="user-list">   
+    <div *ngIf="users">
+      <ul *ngFor="let user of users">
+        <li *ngIf="user">{{user.email}}
+          <button (click)="joinGame(user)">Play</button>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

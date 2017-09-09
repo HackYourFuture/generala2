@@ -15,7 +15,7 @@ export class GameComponent implements OnInit {
   constructor(private router: Router, private authService:AuthService, private gameService: GameService) { }
   
   goBack(){
-     this.router.navigate(['/']);
+     this.router.navigate(['/user-list']);
    }
    
   ngOnInit() {

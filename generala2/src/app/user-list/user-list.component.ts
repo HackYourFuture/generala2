@@ -21,7 +21,10 @@ export class UserListComponent implements OnInit {
     this.gameService.reqUsers();
     this.gameService.resUsers().subscribe(users => this.users = users);
   }
-
+  
+  goBack(){
+     this.router.navigate(['/']);
+  }
   joinGame(user){
     user.inviterEmail = this.authService.getCurrentUser().email;
     this.gameService.joinGame(user);

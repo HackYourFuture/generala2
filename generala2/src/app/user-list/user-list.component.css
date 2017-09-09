@@ -1,5 +1,12 @@
-.playerDice{
-    width: 100%;
+.user-list{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 1em;
+    margin-top: 1em;
+    background-color:burlywood;
+    border-radius:0.5em;
 }
 
 span {
