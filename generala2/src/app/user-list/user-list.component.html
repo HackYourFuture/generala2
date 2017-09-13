@@ -5,7 +5,7 @@
   <div class="user-list">   
     <div *ngIf="users">
       <ul *ngFor="let user of users">
-        <li *ngIf="user">{{user.email}}
+        <li *ngIf="user.email != me.email">{{user.email}}
           <button (click)="joinGame(user)">Play</button>
         </li>
       </ul>

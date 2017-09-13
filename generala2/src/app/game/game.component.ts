@@ -12,7 +12,34 @@ export class GameComponent implements OnInit {
   private message: String;
   private player1; private player2;
   private playerId1; private playerId2;
-  constructor(private router: Router, private authService:AuthService, private gameService: GameService) { }
+  private score1; private score2;
+  constructor(private router: Router, private authService:AuthService, private gameService: GameService) {
+        this.score1 = {
+        "score1": 0,
+        "score2": 0,
+        "score3": 0,
+        "score4": 0,
+        "score5": 0,
+        "score6": 0
+      };
+
+      this.score2 = {
+        "score1": 0,
+        "score2": 0,
+        "score3": 0,
+        "score4": 0,
+        "score5": 0,
+        "score6": 0,
+        
+      };
+      this.score2.dice = [
+        "./assets/dice/dice1.png",
+        "./assets/dice/dice2.png",
+        "./assets/dice/dice3.png",
+        "./assets/dice/dice4.png",
+        "./assets/dice/dice5.png"
+      ];
+   }
   
   goBack(){
      this.router.navigate(['/user-list']);
@@ -30,23 +57,8 @@ export class GameComponent implements OnInit {
     });
   }
   
-  score1 = {
-    "score1": 0,
-    "score2": 0,
-    "score3": 0,
-    "score4": 0,
-    "score5": 0,
-    "score6": 0
-  };
-
-  score2 = {
-    "score1": 0,
-    "score2": 0,
-    "score3": 0,
-    "score4": 0,
-    "score5": 0,
-    "score6": 0
-  };
+  
+  //score2.
   setScore(score){
     this.score1 = score;
 

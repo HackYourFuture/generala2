@@ -3,7 +3,7 @@
   <div class="game"> 
     <div class="dice">
       <app-player-dice (select)="setScore($event)" class="player-dice"></app-player-dice>
-      <app-player-dice class="player-dice"></app-player-dice>
+      <app-player-dice2 [dices]= "score2.dice" class="player-dice"></app-player-dice2>
       <button (click)="saveGame()">Save Game</button>
       <app-games-list></app-games-list>
     </div>

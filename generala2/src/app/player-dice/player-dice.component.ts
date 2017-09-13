@@ -54,6 +54,7 @@ export class PlayerDiceComponent implements OnInit {
       for (let i: number = 0; i < 5; i++){
         let randomDice  = Math.floor( Math.random() * 6 )
         this.dices[i] = this.initialDices[randomDice];
+
         switch(randomDice + 1) { 
             case 1: { 
                 this.score.score1 += 1; 
@@ -93,6 +94,7 @@ export class PlayerDiceComponent implements OnInit {
     
   }
   onSelect() {
+    this.score.dice = this.dices;
     this.select.emit(this.score);
   }
 

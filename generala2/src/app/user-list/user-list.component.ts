@@ -12,6 +12,7 @@ import { GameService } from 'app/game.service';
 export class UserListComponent implements OnInit {
   private users;
   private message;
+  private me;
   constructor(private router: Router, private authService: AuthService, 
     private gameService : GameService) {
 
@@ -19,6 +20,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.gameService.reqUsers();
+    this.me = this.authService.getCurrentUser();
     this.gameService.resUsers().subscribe(users => this.users = users);
   }
   
