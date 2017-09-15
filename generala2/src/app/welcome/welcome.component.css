@@ -37,6 +37,10 @@ h1 {
 }
 
 @media only screen and (min-width : 500px) {
+    .welcome,#header{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
     #header{
         margin-top: 2em;
     }
