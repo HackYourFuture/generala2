@@ -8,3 +8,12 @@
     background-color:burlywood;
     border-radius:0.5em;
 }
+form{
+    background-color:lightsalmon;
+    padding: 1em;
+    color: brown;
+    margin-bottom: 2em;
+}
+h2{
+    color: brown;
+}

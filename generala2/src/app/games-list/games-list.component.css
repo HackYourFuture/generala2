@@ -1,10 +1,25 @@
+.gameList {
+    
+    width: 90%;
+    margin-bottom: 1em;
+}
 span {
     color:brown;
 }
+
+
 table {
-    color:brown;
-    margin-bottom: 1em;
-}
-table, th, td {
     border: 1px solid brown;
+}
+table th {
+    background-color: brown;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+table td {
+    width: 10em;
+    color: brown;
+    border: 1px dotted brown;
+    word-break: break-all;
 }

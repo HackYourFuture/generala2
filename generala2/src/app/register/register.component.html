@@ -13,9 +13,9 @@
         <input type="password" id="password" [(ngModel)]="user.password" name="password" required>
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit">Register</button>
     </form>
 
-    <p>{{message}}</p>
+    <p *ngIf="message">{{message}}</p>
   </div>
 </main>
